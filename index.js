@@ -1,20 +1,18 @@
 import Plugin from '@swup/plugin'
 
-export class SwupNewlogicDigitalPlugin extends Plugin {
-    name = 'SwupNewlogicDigitalPlugin'
+export class SwupCorePlugin extends Plugin {
+    name = 'SwupCorePlugin'
 
     requires = { swup: '>=4' }
 
-    defaults = {
-        ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja]'),
-        animationSelector: '.swup-transition'
-    }
-
-    constructor(options = {}) {
+    constructor() {
         super()
 
-        /* Merge default options and user options */
-        this.options = { ...this.defaults, options }
+        this.swup.options = {
+            ...this.swup.options,
+            ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja]'),
+            animationSelector: '.swup-transition'
+        }
     }
 
     mount() {
@@ -76,9 +74,9 @@ export class SwupNewlogicDigitalPlugin extends Plugin {
         if (!noSwup) return
 
         if (noSwup.classList.contains('button')) {
-            noSwup.classList.add('loading')
+            noSwup.dataset.loading = ''
         } else {
-            noSwup.classList.add('cursor-wait')
+            noSwup.style.cursor = 'wait'
         }
     }
 }
