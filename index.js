@@ -5,18 +5,14 @@ export class SwupCorePlugin extends Plugin {
 
     requires = { swup: '>=4' }
 
-    constructor() {
-        super()
+    mount() {
+        document.addEventListener('click', this.handleNoSwupClick.bind(this))
 
         this.swup.options = {
             ...this.swup.options,
             ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja]'),
-            animationSelector: '.swup-transition'
+            animationSelector: '.view-transition-main'
         }
-    }
-
-    mount() {
-        document.addEventListener('click', this.handleNoSwupClick.bind(this))
 
         this.swup.hooks.before('scroll:top', this.handleScrollTop.bind(this))
         this.swup.hooks.on('content:replace', this.handleContentReplace.bind(this))
