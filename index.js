@@ -28,13 +28,7 @@ export class SwupCorePlugin extends Plugin {
         if (visit.from.url !== visit.to.url) (options.behavior = 'instant')
     }
 
-    /** @var {Array} dataLayer */
-    /** @var {Function} rc */
-    /** @var {Function} retargetingHit */
-    /** @var {Function} conversionHit */
-    /** @var {Object} retargetingConf */
-    /** @var {Object} conversionConf */
-    /** @var {Function} fbq */
+
     handleContentReplace(visit, { page }) {
         const content = new DOMParser().parseFromString(page.html, 'text/html')
 
@@ -45,14 +39,14 @@ export class SwupCorePlugin extends Plugin {
             replaceElement ? (replaceElement.outerHTML = element.outerHTML) : placement.insertAdjacentHTML('beforeend', element.outerHTML)
         })
 
+        this.handleConversion()
+    }
+
+    /** @var {Array} dataLayer */
+    handleConversion() {
         window.dataLayer && window.dataLayer.push({
             event: 'page_view'
         })
-
-        window.rc?.retargetingHit && window.rc.retargetingHit(window.retargetingConf ?? {})
-        window.rc?.conversionHit && window.rc.conversionHit(window.conversionConf ?? {})
-
-        window.fbq && window.fbq('track', 'PageView')
     }
 
     handleCacheSet(visit, { page }) {
@@ -69,7 +63,7 @@ export class SwupCorePlugin extends Plugin {
 
         if (!noSwup) return
 
-        if (noSwup.classList.contains('button')) {
+        if (noSwup.classList.contains('x-button')) {
             noSwup.dataset.loading = ''
         } else {
             noSwup.style.cursor = 'wait'
