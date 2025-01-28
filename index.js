@@ -1,6 +1,8 @@
 import Plugin from '@swup/plugin'
 
 export class SwupCorePlugin extends Plugin {
+    isSwupPlugin = true
+
     name = 'SwupCorePlugin'
 
     requires = { swup: '>=4' }
@@ -27,7 +29,6 @@ export class SwupCorePlugin extends Plugin {
     handleScrollTop(visit, { options }) {
         if (visit.from.url !== visit.to.url) (options.behavior = 'instant')
     }
-
 
     handleContentReplace(visit, { page }) {
         const content = new DOMParser().parseFromString(page.html, 'text/html')
