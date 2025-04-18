@@ -31,10 +31,10 @@ export class SwupCorePlugin extends Plugin {
     }
 
     handleContentReplace(visit, { page }) {
-        const content = new DOMParser().parseFromString(page.html, 'text/html')
+        const content = visit.to.document
 
         content.querySelectorAll('[data-swup-replace]').forEach((element) => {
-            const replaceElement = document.querySelector(`[data-swup-replace="${element.dataset.libReplaceTag}"]`)
+            const replaceElement = document.querySelector(`[data-swup-replace="${element.dataset.swupReplace}"]`)
             const placement = element.closest('head') ? document.head : replaceElement.parentElement
 
             replaceElement ? (replaceElement.outerHTML = element.outerHTML) : placement.insertAdjacentHTML('beforeend', element.outerHTML)
