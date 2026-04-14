@@ -15,8 +15,10 @@
     "@swup/plugin": "^4"
   },
   "devDependencies": {
-    "eslint": "^9.6.0",
-    "neostandard": "^0.11.0"
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.2.0",
+    "globals": "^17.5.0"
   },
   "files": [
     "index.js"
