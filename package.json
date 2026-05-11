@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/swup-plugins",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "src/index.js",
   "author": "New Logic Studio s.r.o.",
@@ -17,8 +17,8 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "eslint": "^10.2.0",
-    "globals": "^17.5.0"
+    "eslint": "^10.3.0",
+    "globals": "^17.6.0"
   },
   "files": [
     "index.js"
