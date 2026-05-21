@@ -1,6 +1,6 @@
 {
   "name": "@newlogic-digital/swup-plugins",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "main": "src/index.js",
   "author": "New Logic Studio s.r.o.",

@@ -12,6 +12,7 @@ export class SwupCorePlugin extends Plugin {
 
     this.swup.options = {
       ...this.swup.options,
+      containers: this.swup.options.containers.filter(element => document.querySelector(element)),
       ignoreVisit: (url, { el }) => el?.closest('[data-no-swup], [data-naja]'),
       animationSelector: '.view-transition-main',
     }
